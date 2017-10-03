@@ -121,33 +121,5 @@ const prod = defaults(
   baseConfig
 );
 
-const dev = defaults(
-  {
-    plugins: baseConfig.plugins.concat([
-      new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
-      new UnusedFilesWebpackPlugin({
-        pattern: 'src/**/*.+(js|jsx)'
-      }),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
-    ])
-  },
-  baseConfig
-);
 
-const devServer = {
-  stats: {
-    colors: true,
-    chunks: false
-  },
-  port: 3002,
-  hot: true,
-  historyApiFallback: true,
-  publicPath: 'http://localhost:3002/static/',
-  disableHostCheck: true
-};
-
-// console.log(prod);
-
-module.exports = { dev, devServer, prod };
+module.exports = { prod };
